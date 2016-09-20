@@ -16,7 +16,6 @@ namespace WindowsDemo.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
         private IEnumerable<Prato>  listPrato;
         public IEnumerable<Prato>  ListPratos
         {
@@ -86,6 +85,7 @@ namespace WindowsDemo.ViewModel
                 }
             }
         }
+
 
         public MainViewModel()
         {

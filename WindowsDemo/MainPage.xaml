@@ -21,7 +21,25 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Border BorderBrush="Black" BorderThickness="2" MaxWidth="400">
             <StackPanel Margin="10">
-                <ListView ItemsSource="{Binding ListPratos}" SelectionMode="Single" SelectedItem="{Binding SelectedPrato, Mode=TwoWay}" Margin="0,5"/>
+                <ListView ItemsSource="{Binding ListPratos}" SelectionMode="Single" SelectedItem="{Binding SelectedPrato, Mode=TwoWay}" Margin="0,5">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Nome}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Preco}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <CheckBox Content="É um casal? (30% desconto)" IsChecked="{Binding IsCasal, Mode=TwoWay}" Margin="0,5"/>
                 <TextBox Header="Número de pessoas" Text="{Binding Pessoas, Converter={StaticResource IntToStringConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,5" IsEnabled="{Binding IsCasal, Converter={StaticResource NegateBoolConverter}}"/>
                 <StackPanel Orientation="Horizontal" Margin="0,5">
